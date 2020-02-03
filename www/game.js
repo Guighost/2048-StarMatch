@@ -109,6 +109,7 @@ var playGame = new Phaser.Class({
             loop: true,
             delay: 0
         })
+        backMusic.pause();
         backMusic.play();
         function handleVisibilityChange() {
             //console.log("hidden = " + hidden);
@@ -433,7 +434,8 @@ var endGame = new Phaser.Class({
         var restartButton2 = this.add.sprite(450, 1200, "restart");
         restartButton2.setInteractive();
         restartButton2.on("pointerdown", function () {
-            this.scene.start("PlayGame");
+            location.reload();
+            //this.scene.start("PlayGame");
         }, this)
     }
 });
