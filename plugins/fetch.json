@@ -1,0 +1,10 @@
+{
+    "cordova-plugin-enhance": {
+        "source": {
+            "type": "registry",
+            "id": "enhance-cordova-connector"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

@@ -6,6 +6,23 @@
     "config_munge": {
         "files": {}
     },
-    "installed_plugins": {},
-    "dependent_plugins": {}
+    "installed_plugins": {
+        "cordova-plugin-enhance": {
+            "PACKAGE_NAME": "com.GuiGhostGames.StarMatch2048"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-enhance/www/enhance.js",
+            "id": "cordova-plugin-enhance.Enhance",
+            "pluginId": "cordova-plugin-enhance",
+            "clobbers": [
+                "Enhance"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-enhance": "3.0.0"
+    }
 }
