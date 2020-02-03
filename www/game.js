@@ -47,7 +47,13 @@ var preloadAssets = new Phaser.Class({
         this.load.bitmapFont("font", "assets/fonts/font.png", "assets/fonts/font.xml");
         this.load.audio("move", ["assets/sounds/move.ogg", "assets/sounds/move.mp3"]);
         this.load.audio("grow", ["assets/sounds/grow.ogg", "assets/sounds/grow.mp3"]);
-        this.load.audio("backMusic", ["assets/sounds/Diabolus.mp3"]);
+        this.load.audio("grow2", [ "assets/sounds/grow2.mp3"]);
+        this.load.audio("grow3", ["assets/sounds/grow3.mp3"]);
+        this.load.audio("grow4", [ "assets/sounds/grow4.mp3"]);
+        this.load.audio("grow5", [ "assets/sounds/grow5.mp3"]);
+        this.load.audio("grow6", [ "assets/sounds/grow6.mp3"]);
+        this.load.audio("grow7", [ "assets/sounds/grow7.mp3"]);
+        this.load.audio("backMusic", ["assets/sounds/loop.mp3"]);
     },
     create: function(){
         this.scene.start("IntroGame");
@@ -171,6 +177,13 @@ var playGame = new Phaser.Class({
         this.input.on("pointerup", this.endSwipe, this);
         this.moveSound = this.sound.add("move");
         this.growSound = this.sound.add("grow");
+        this.growSound2 = this.sound.add("grow2");
+        this.growSound3 = this.sound.add("grow3");
+        this.growSound4 = this.sound.add("grow4");
+        this.growSound5 = this.sound.add("grow5");
+        this.growSound6 = this.sound.add("grow6");
+        this.growSound7 = this.sound.add("grow7");
+  
         
         
     },
@@ -365,7 +378,38 @@ var playGame = new Phaser.Class({
         })
     },
     transformTile: function(tile, row, col){
-        this.growSound.play();
+     
+        console.log("logging tile " + this.fieldArray[row][col].tileValue)
+        var tileValueThisTime = this.fieldArray[row][col].tileValue;
+        switch (tileValueThisTime) {
+      
+            case 1:
+                this.growSound.play();
+                break;
+            case 2:
+                this.growSound2.play();
+                break;
+            case 3:
+                this.growSound3.play();
+                break;
+            case 4:
+                this.growSound4.play();
+                break;
+            case 5:
+                this.growSound5.play();
+                break;
+            case 6:
+                this.growSound6.play();
+                break;
+            case 7:
+                this.growSound7.play();
+                break;
+            default:
+                this.growSound.play();
+        }
+
+
+
         this.movingTiles ++;
         tile.tileSprite.setFrame(this.fieldArray[row][col].tileValue - 1);
         this.tweens.add({
