@@ -164,5 +164,29 @@
         <audio controls volume="0.2" id="gameSoundLoop" class="gameSounds" loop autoplay>
             <source src="assets/sounds/Diabolus.mp3" type="audio/mp3">
         </audio>
+
+        <script type=text/javascript>
+
+            var callback = function (result) {
+                if (!result) {
+                    app.writeLog('Interstitial ad is not ready');
+                    return;
+                }
+
+                Enhance.showInterstitialAd();
+            };
+
+            // set interval to check for interstatial
+
+            var onceOnlyAd = 0;
+            var tid = setInterval(interPop, 210000);
+            function interPop() {
+              
+                    Enhance.isInterstitialReady(callback);
+                               
+            }
+
+
+        </script>
 	</body>
 </html>
