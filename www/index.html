@@ -175,16 +175,23 @@
 
                 Enhance.showInterstitialAd();
             };
-
-            // set interval to check for interstatial
-
-            var onceOnlyAd = 0;
-            var tid = setInterval(interPop, 210000);
-            function interPop() {
-              
-                    Enhance.isInterstitialReady(callback);
                                
-            }
+                               
+                var onceOnlyAd = 0;
+                var timeCount = 0;
+                var showAdVar = 0
+                var tid = setInterval(interPop, 500);
+                function interPop() {
+                    timeCount++
+                    if (timeCount >= 240) { localStorage.setItem('ShowAd', 1); timeCount = 0; }
+                    showAdVar = localStorage.getItem('ShowAd');
+                    if (showAdVar == 1) {
+                        timeCount = 0;
+                        localStorage.setItem('ShowAd', 0);
+                        Enhance.isInterstitialReady(callback);
+                    }
+
+                }
 
 
         </script>

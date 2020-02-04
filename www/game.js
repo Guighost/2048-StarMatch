@@ -108,14 +108,14 @@ var playGame = new Phaser.Class({
         }
         backMusic = this.sound.add("backMusic", {
             mute: false,
-            volume: 1,
+            volume: 0.7,
             rate: 1,
             detune: 0,
             seek: 0,
             loop: true,
             delay: 0
         })
-        backMusic.pause();
+    
         backMusic.play();
         function handleVisibilityChange() {
             //console.log("hidden = " + hidden);
@@ -478,8 +478,13 @@ var endGame = new Phaser.Class({
         var restartButton2 = this.add.sprite(450, 1200, "restart");
         restartButton2.setInteractive();
         restartButton2.on("pointerdown", function () {
-            location.reload();
-            //this.scene.start("PlayGame");
+            localStorage.setItem('ShowAd', 1);
+            setTimeout(function () {
+              
+                backMusic.stop();
+                this.scene.start("PlayGame");
+            }, 5000);
+            
         }, this)
     }
 });
