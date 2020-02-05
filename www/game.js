@@ -13,7 +13,7 @@ window.onload = function() {
        type: Phaser.CANVAS,
        width: gameOptions.tileSize * 4 + gameOptions.tileSpacing * 5,
        height: (gameOptions.tileSize * 4 + gameOptions.tileSpacing * 5) * 16 / 9,
-       backgroundColor: "#000033",
+       backgroundColor: "#143db8",
        scene: [preloadAssets, introGame, playGame, endGame]
    };
     game = new Phaser.Game(gameConfig);
@@ -32,11 +32,11 @@ var preloadAssets = new Phaser.Class({
     preload: function(){
         this.load.image("spot", "assets/sprites/spot.png");
         this.load.image("spot2", "assets/sprites/spot2.png");
-        this.load.image("gametitle", "assets/sprites/gametitle2.png");
-        this.load.image("start", "assets/sprites/start.png");
+        this.load.image("gametitle", "assets/sprites/gametitle4.png");
+        this.load.image("start", "assets/sprites/start2.png");
         this.load.image("restart", "assets/sprites/restart2.png");
         this.load.image("scorepanel", "assets/sprites/scorepanel2.png");
-        this.load.image("scorelabels", "assets/sprites/scorelabels.png");
+        this.load.image("scorelabels", "assets/sprites/scorelabels1.png");
         this.load.image("logo", "assets/sprites/logo2.png");
         this.load.image("howtoplay", "assets/sprites/howtoplay2.png");
         this.load.image("gameOver", "assets/sprites/gameOver.png");
@@ -66,7 +66,7 @@ var introGame = new Phaser.Class({
         Phaser.Scene.call(this, { key: "IntroGame" });
     },
     create: function () {
-        var startButton = this.add.sprite(450, 850, "start");
+        var startButton = this.add.sprite(450, 705, "start");
         startButton.setDisplaySize(1000, 1400);
         startButton.setInteractive();
         startButton.on("pointerdown", function () {
@@ -158,7 +158,7 @@ var playGame = new Phaser.Class({
         }, this)
         this.add.sprite(this.tileDestination(1, COL), this.tileDestination(0, ROW) - 200, "scorepanel");
         this.add.sprite(this.tileDestination(1, COL), this.tileDestination(0, ROW) - 270, "scorelabels");
-        this.add.sprite(250, 5, "gametitle").setOrigin(0, 0);
+        this.add.sprite(50, 5, "gametitle").setOrigin(0, 0);
         //var howTo = this.add.sprite(game.config.width, 5, "howtoplay");
         //howTo.setOrigin(1, 0);
         //var logo = this.add.sprite(game.config.width / 2, game.config.height, "logo");
