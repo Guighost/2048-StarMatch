@@ -152,7 +152,8 @@ var playGame = new Phaser.Class({
         //this.backMusic;
         var restartButton = this.add.sprite(this.tileDestination(3, COL), this.tileDestination(0, ROW) - 200, "restart");
         restartButton.setInteractive();
-        restartButton.on("pointerdown", function(){
+        restartButton.on("pointerdown", function () {
+            backMusic.stop();
             this.scene.start("PlayGame");
         }, this)
         this.add.sprite(this.tileDestination(1, COL), this.tileDestination(0, ROW) - 200, "scorepanel");
@@ -477,13 +478,15 @@ var endGame = new Phaser.Class({
 
         var restartButton2 = this.add.sprite(450, 1200, "restart");
         restartButton2.setInteractive();
+        var adOnly1time = 0;
         restartButton2.on("pointerdown", function () {
-            localStorage.setItem('ShowAd', 1);
-            setTimeout(function () {
-              
-                backMusic.stop();
-                this.scene.start("PlayGame");
-            }, 5000);
+                        if (adOnly1time == 0) { localStorage.setItem('ShowAd', 1); adOnly1time = 1; }
+                        else {
+                            backMusic.stop();
+                            this.scene.start("PlayGame");
+                            adOnly1time = 0;
+                            localStorage.setItem('ShowAd', 0);
+                        }
             
         }, this)
     }
