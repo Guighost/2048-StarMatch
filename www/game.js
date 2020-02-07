@@ -32,11 +32,12 @@ var preloadAssets = new Phaser.Class({
     preload: function(){
         this.load.image("spot", "assets/sprites/spot.png");
         this.load.image("spot2", "assets/sprites/spot2.png");
-        this.load.image("gametitle", "assets/sprites/gametitle4.png");
+        this.load.image("gametitle", "assets/sprites/gametitle5.png");
         this.load.image("start", "assets/sprites/start2.png");
         this.load.image("restart", "assets/sprites/restart2.png");
-        this.load.image("scorepanel", "assets/sprites/scorepanel2.png");
-        this.load.image("scorelabels", "assets/sprites/scorelabels1.png");
+        this.load.image("moreGames", "assets/sprites/moreGames.png");
+        this.load.image("scorepanel", "assets/sprites/scorepanelWithLabel.png");
+        this.load.image("scorelabels", "assets/sprites/scorelabels850.png");
         this.load.image("logo", "assets/sprites/logo2.png");
         this.load.image("howtoplay", "assets/sprites/howtoplay2.png");
         this.load.image("gameOver", "assets/sprites/gameOver.png");
@@ -149,16 +150,22 @@ var playGame = new Phaser.Class({
 
 
 
-        //this.backMusic;
-        var restartButton = this.add.sprite(this.tileDestination(3, COL), this.tileDestination(0, ROW) - 200, "restart");
+            //this.backMusic;
+            var moreGamesButton = this.add.sprite((game.config.width / 4 )* 3, 1350, "moreGames");
+            moreGamesButton.setInteractive();
+            moreGamesButton.on("pointerdown", function () {
+                backMusic.stop();
+                window.open("https://play.google.com/store/apps/dev?id=8098884313818524240", "_blank");
+            }, this)
+            var restartButton = this.add.sprite(game.config.width/4, 1350, "restart");
         restartButton.setInteractive();
         restartButton.on("pointerdown", function () {
             backMusic.stop();
             this.scene.start("PlayGame");
         }, this)
-        this.add.sprite(this.tileDestination(1, COL), this.tileDestination(0, ROW) - 200, "scorepanel");
-        this.add.sprite(this.tileDestination(1, COL), this.tileDestination(0, ROW) - 270, "scorelabels");
-        this.add.sprite(50, 5, "gametitle").setOrigin(0, 0);
+         this.add.sprite(this.tileDestination(1, COL) + 100, this.tileDestination(0, ROW) - 290, "scorepanel");
+        //this.add.sprite(this.tileDestination(1, COL)+ 130, this.tileDestination(0, ROW) - 300, "scorelabels");
+        //this.add.sprite(8, 5, "gametitle").setOrigin(0, 0);
         //var howTo = this.add.sprite(game.config.width, 5, "howtoplay");
         //howTo.setOrigin(1, 0);
         //var logo = this.add.sprite(game.config.width / 2, game.config.height, "logo");
@@ -167,9 +174,9 @@ var playGame = new Phaser.Class({
         //logo.on("pointerdown", function(){
         //    window.location.href = "http://guighostgames.com"
         //});
-        this.scoreText = this.add.bitmapText(this.tileDestination(0, COL) - 80, this.tileDestination(0, ROW) - 225, "font", "0");
-        this.bestScoreText = this.add.bitmapText(this.tileDestination(2, COL) - 190, this.tileDestination(0, ROW) - 225, "font", this.bestScore.toString());
-        this.instruction2 = this.add.text(15, 1250, 'Swipe Up, Left, Down, or Right to move the stars together', { fontSize: '32px', fill: '#f1f442', fontFamily: 'Comic sans ms' });
+        this.scoreText = this.add.bitmapText(this.tileDestination(0, COL) + 30, this.tileDestination(0, ROW) - 290, "font", "0");
+        this.bestScoreText = this.add.bitmapText(this.tileDestination(2, COL) +120, this.tileDestination(0, ROW) - 290, "font", this.bestScore.toString());
+        this.instruction2 = this.add.text(90, 1200, 'Swipe Up, Left, Down, or Right to merge the stars', { fontSize: '32px', fill: '#f1f442', fontFamily: 'Segoe UI' });
 
         this.input.keyboard.on("keydown", this.handleKey, this);
         this.canMove = false;
@@ -453,7 +460,7 @@ var playGame = new Phaser.Class({
         return (row >= 0) && (col >= 0) && (row < 4) && (col < 4);
     },
     tileDestination: function(pos, axis){
-        var offset = (axis == ROW) ? (game.config.height - game.config.width) / 2 : 0;
+        var offset = (axis == ROW) ? (game.config.height - game.config.width) / 2 - 60 : 0;
         return pos * (gameOptions.tileSize + gameOptions.tileSpacing) + gameOptions.tileSize / 2 + gameOptions.tileSpacing + offset;
     }
 });
