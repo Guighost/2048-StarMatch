@@ -174,8 +174,8 @@ var playGame = new Phaser.Class({
         //logo.on("pointerdown", function(){
         //    window.location.href = "http://guighostgames.com"
         //});
-        this.scoreText = this.add.bitmapText(this.tileDestination(0, COL) + 30, this.tileDestination(0, ROW) - 290, "font", "0");
-        this.bestScoreText = this.add.bitmapText(this.tileDestination(2, COL) +120, this.tileDestination(0, ROW) - 290, "font", this.bestScore.toString());
+        this.scoreText = this.add.bitmapText(this.tileDestination(0, COL) + 30, this.tileDestination(0, ROW) - 270, "font", "0");
+        this.bestScoreText = this.add.bitmapText(this.tileDestination(2, COL) +120, this.tileDestination(0, ROW) - 270, "font", this.bestScore.toString());
         this.instruction2 = this.add.text(90, 1200, 'Swipe Up, Left, Down, or Right to merge the stars', { fontSize: '32px', fill: '#f1f442', fontFamily: 'Segoe UI' });
 
         this.input.keyboard.on("keydown", this.handleKey, this);
