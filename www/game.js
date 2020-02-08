@@ -163,7 +163,7 @@ var playGame = new Phaser.Class({
             backMusic.stop();
             this.scene.start("PlayGame");
         }, this)
-         this.add.sprite(this.tileDestination(1, COL) + 100, this.tileDestination(0, ROW) - 290, "scorepanel");
+         this.add.sprite(this.tileDestination(1, COL) + 100, this.tileDestination(0, ROW) - 270, "scorepanel");
         //this.add.sprite(this.tileDestination(1, COL)+ 130, this.tileDestination(0, ROW) - 300, "scorelabels");
         //this.add.sprite(8, 5, "gametitle").setOrigin(0, 0);
         //var howTo = this.add.sprite(game.config.width, 5, "howtoplay");
