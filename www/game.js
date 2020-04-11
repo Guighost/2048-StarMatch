@@ -91,7 +91,7 @@ var playGame = new Phaser.Class({
         this.fieldGroup = this.add.group();
         this.score = 0;
         this.bestScore = localStorage.getItem(gameOptions.localStorageName) == null ? 0 : localStorage.getItem(gameOptions.localStorageName);
-        for(var i = 0; i < 4; i++){
+        for(var i = 0; i < 5; i++){
             this.fieldArray[i] = [];
             for(var j = 0; j < 4; j++){
                 var spot = this.add.sprite(this.tileDestination(j, COL), this.tileDestination(i, ROW), "spot")
@@ -151,13 +151,13 @@ var playGame = new Phaser.Class({
 
 
             //this.backMusic;
-            var moreGamesButton = this.add.sprite((game.config.width / 4 )* 3, 1350, "moreGames");
-            moreGamesButton.setInteractive();
-            moreGamesButton.on("pointerdown", function () {
-                backMusic.stop();
-                window.open("https://play.google.com/store/apps/dev?id=8098884313818524240", "_blank");
-            }, this)
-            var restartButton = this.add.sprite(game.config.width/4, 1350, "restart");
+            // var moreGamesButton = this.add.sprite((game.config.width / 4 )* 3, 1350, "moreGames");
+            // moreGamesButton.setInteractive();
+            // moreGamesButton.on("pointerdown", function () {
+                // backMusic.stop();
+                // window.open("https://play.google.com/store/apps/dev?id=8098884313818524240", "_blank");
+            // }, this)
+            var restartButton = this.add.sprite(game.config.width/2, 1400, "restart");
         restartButton.setInteractive();
         restartButton.on("pointerdown", function () {
             backMusic.stop();
@@ -176,7 +176,7 @@ var playGame = new Phaser.Class({
         //});
         this.scoreText = this.add.bitmapText(this.tileDestination(0, COL) + 30, this.tileDestination(0, ROW) - 270, "font", "0");
         this.bestScoreText = this.add.bitmapText(this.tileDestination(2, COL) +120, this.tileDestination(0, ROW) - 270, "font", this.bestScore.toString());
-        this.instruction2 = this.add.text(90, 1200, 'Swipe Up, Left, Down, or Right to merge the stars', { fontSize: '32px', fill: '#f1f442', fontFamily: 'Segoe UI' });
+        this.instruction2 = this.add.text(90, this.tileDestination(0, ROW) - 150, 'Swipe Up, Left, Down, or Right to merge the stars', { fontSize: '32px', fill: '#f1f442', fontFamily: 'Segoe UI' });
 
         this.input.keyboard.on("keydown", this.handleKey, this);
         this.canMove = false;
@@ -487,7 +487,7 @@ var endGame = new Phaser.Class({
         restartButton2.setInteractive();
         var adOnly1time = 0;
         restartButton2.on("pointerdown", function () {
-                        if (adOnly1time == 0) { localStorage.setItem('ShowAd', 1); adOnly1time = 1; }
+                        if (adOnly1time == 0) { backMusic.stop(); localStorage.setItem('ShowAd', 1); adOnly1time = 1; }
                         else {
                             backMusic.stop();
                             this.scene.start("PlayGame");

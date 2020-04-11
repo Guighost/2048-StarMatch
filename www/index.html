@@ -183,7 +183,7 @@
                 var tid = setInterval(interPop, 500);
                 function interPop() {
                     timeCount++
-                    if (timeCount >= 600  ) { localStorage.setItem('ShowAd', 1); timeCount = 0; }
+                    if (timeCount >= 300  ) { localStorage.setItem('ShowAd', 1); timeCount = 0; }
                     showAdVar = localStorage.getItem('ShowAd');
                     if (showAdVar == 1) {
                         timeCount = 0;
