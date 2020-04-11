@@ -91,7 +91,7 @@ var playGame = new Phaser.Class({
         this.fieldGroup = this.add.group();
         this.score = 0;
         this.bestScore = localStorage.getItem(gameOptions.localStorageName) == null ? 0 : localStorage.getItem(gameOptions.localStorageName);
-        for(var i = 0; i < 5; i++){
+        for(var i = 0; i < 4; i++){
             this.fieldArray[i] = [];
             for(var j = 0; j < 4; j++){
                 var spot = this.add.sprite(this.tileDestination(j, COL), this.tileDestination(i, ROW), "spot")
