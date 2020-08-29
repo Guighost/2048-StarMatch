@@ -23,7 +23,7 @@
 	<platform name="android">
         <allow-intent href="market:*" />
 		<icon src="icon.png" />
-        <preference name="android-targetSdkVersion" value="28" />
+        <preference name="android-targetSdkVersion" value="29" />
         <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
         <preference name="KeepRunning" value="true"/>
         <preference name="InAppBrowserStorageEnabled" value="true"/>
